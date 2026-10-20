@@ -22,7 +22,7 @@
 <span data-sc-progress></span>
 <div class="sc-grain" aria-hidden="true"></div>
 
-<a class="book-top" href="tel:+34647591229">Book a table</a>
+<a class="book-top" href="https://salimbennani39.github.io/showcase/404.html">Book a table</a>
 
 <!-- The coaster: the only navigation. It collects a wine ring for every
      chapter you reach. -->
@@ -47,7 +47,7 @@
       <li><a href="#verre">Le verre <span>your glass</span></a></li>
       <li><a href="#dedans">Dedans <span>find us</span></a></li>
     </ol>
-    <a class="coaster__book" href="tel:+34647591229">Book a table</a>
+    <a class="coaster__book" href="https://salimbennani39.github.io/showcase/404.html">Book a table</a>
   </div>
 </nav>
 
@@ -193,7 +193,7 @@
       <div class="inside__text sc-stack" data-sc-in data-sc-stagger="60">
         <h2 class="d-inside">Now you know.</h2>
         <p class="inside__addr">41, rue Tarik Ibn Ziad, Guéliz, Marrakech.<br>Six in the evening until two in the morning, Monday to Saturday.</p>
-        <p class="inside__cta"><a class="btn" href="tel:+34647591229">Book a table</a><span class="inside__alt">+34 647 591 229 · <a href="tel:+34647591229">+34 647 591 229</a></span></p>
+        <p class="inside__cta"><a class="btn" href="https://salimbennani39.github.io/showcase/404.html">Book a table</a><span class="inside__alt">+34 647 591 229 · <a href="https://salimbennani39.github.io/showcase/404.html">+34 647 591 229</a></span></p>
         <p class="inside__links"><a href="https://www.google.com/maps/search/?api=1&query=Gueliz+Marrakech" rel="noopener" target="_blank">Directions</a><a href="#" rel="noopener" target="_blank">Instagram</a></p>
       </div>
       <figure class="inside__door" data-sc-in>
@@ -209,10 +209,12 @@
 <script src="scrollcraft.js"></script>
 <script>ScrollCraft.mount(document.body);</script>
 <script src="le41.js"></script>
-<script>/* showcase: links that lead nowhere open the Showcase 404 */
+<script>/* showcase: links that lead nowhere, and booking / WhatsApp / call links, open the Showcase 404 */
 (()=>{const U='https://salimbennani39.github.io/showcase/404.html';
-const dead=a=>{const h=(a.getAttribute('href')||'').trim();return h===''||h==='#'||h==='#!'||/^javascript:/i.test(h)};
-addEventListener('click',e=>{if(e.defaultPrevented)return;const a=e.target.closest&&e.target.closest('a');
-if(a&&dead(a)){e.preventDefault();location.href=U;}});})();</script>
+const dead=a=>{const h=(a.getAttribute('href')||'').trim();return h===''||h==='#'||h==='#!'||/^javascript:/i.test(h)||/^(tel:|sms:|mailto:|https?:\/\/(api\.|web\.)?(wa\.me|whatsapp\.com))/i.test(h)};
+addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a');if(!a)return;
+const h=(a.getAttribute('href')||'').trim();const contact=/^(tel:|sms:|mailto:|https?:)/i.test(h);
+if(dead(a)&&(contact||!e.defaultPrevented)){e.preventDefault();e.stopImmediatePropagation();location.href=U;}},true);
+const o=window.open;window.open=function(u){if(/(wa\.me|whatsapp\.com|^tel:)/i.test(String(u||'')))return location.href=U,null;return o.apply(this,arguments)};})();</script>
 </body>
 </html>
